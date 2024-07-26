@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MH - Web Designer & Developer</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="contact-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="navbar-container">
@@ -17,23 +20,32 @@
                 <span class="bar"></span>
             </div>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#home" class="nav-link"><i class="fas fa-home"></i><span>HOME</span></a></li>
-                <li class="nav-item"><a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i><span>EXPERIENCE</span></a></li>
-                <li class="nav-item"><a href="#education" class="nav-link"><i class="fas fa-graduation-cap"></i><span>EDUCATION</span></a></li>
-                <li class="nav-item"><a href="#blog" class="nav-link"><i class="fas fa-blog"></i><span>BLOG</span></a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i><span>CONTACT</span></a></li>
+                <li class="nav-item"><a href="#home" class="nav-link"><i class="fas fa-home"></i><span>HOME</span></a>
+                </li>
+                <li class="nav-item"><a href="#experience" class="nav-link"><i
+                            class="fas fa-briefcase"></i><span>EXPERIENCE</span></a></li>
+                <li class="nav-item"><a href="#education" class="nav-link"><i
+                            class="fas fa-graduation-cap"></i><span>EDUCATION</span></a></li>
+                <li class="nav-item"><a href="#blog" class="nav-link"><i class="fas fa-blog"></i><span>BLOG</span></a>
+                </li>
+                <li class="nav-item"><a href="#contact" class="nav-link"><i
+                            class="fas fa-envelope"></i><span>CONTACT</span></a></li>
             </ul>
         </div>
     </nav>
 
     <main class="container">
-        <div class="content-wrapper">
-            <section class="info-section">
-                <h1 class="greeting"><span class="greeting-hi">Hi, I'm</span> <span class="greeting-name">Muhammad Hasib</span></h1>
-                <p class="subtitle">I'm a dedicated computer science and engineering student with a passion for creating software solutions. I am proficient in Python and JavaScript programming languages.</p>
+        <!-- Home Section -->
+        <section id="home" class="content-wrapper">
+            <div class="info-section">
+                <h1 class="greeting"><span class="greeting-hi">Hi, I'm</span> <span class="greeting-name">Muhammad
+                        Hasib</span></h1>
+                <p class="subtitle">I'm a dedicated computer science and engineering student with a passion for creating
+                    software solutions. I am proficient in Python and JavaScript programming languages.</p>
                 <ul class="contact-info">
                     <li><i class="fas fa-globe"></i> Web Designer & Developer</li>
-                    <li><i class="fas fa-envelope"></i> <a href="mailto:muhammad.hasib@domain.com">muhammad.hasib@domain.com</a></li>
+                    <li><i class="fas fa-envelope"></i> <a
+                            href="mailto:muhammad.hasib@domain.com">muhammad.hasib@domain.com</a></li>
                     <li><i class="fas fa-map-marker-alt"></i> Kingston, New York 12401</li>
                 </ul>
                 <p>Download my curriculum vitae:</p>
@@ -41,15 +53,64 @@
                     <button id="downloadCV">DOWNLOAD CV</button>
                     <button id="contactMe">CONTACT ME</button>
                 </div>
-            </section>
-            <section class="image-section">
+            </div>
+            <div class="image-section">
                 <div class="image-container">
                     <img src="profile.png" alt="Muhammad Hasib working on a laptop">
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
+        <!-- Updated Contact Section -->
+        <section id="contact" class="content-wrapper" style="display: none;">
+            <div class="contact-header">
+                <h1>Contact With Me</h1>
+                <p>Feel free to get in touch with me for any inquiries or collaborations.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Muhammad Hasib</h2>
+                    <p>Web Designer & Developer</p>
+                    <p>I am available for freelance work. Connect with me via and call in to my account.</p>
+                    <p><i class="fas fa-phone"></i> +1 (234) 567-8900</p>
+                    <p><i class="fas fa-envelope"></i> muhammad.hasib@domain.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kingston, New York 12401</p>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit">SEND MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
+
     <button id="scrollToTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
     <script src="script.js"></script>
 </body>
+
 </html>
