@@ -2,79 +2,80 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.querySelector('.nav-menu');
     const scrollToTopButton = document.getElementById('scrollToTop');
-    const mobileBreakpoint = 768; // Match this with your CSS media query
-    const homeSection = document.getElementById('home');
-    const contactSection = document.getElementById('contact');
     const contactMeButton = document.getElementById('contactMe');
     const contactForm = document.getElementById('contact-form');
-    
+    const mobileBreakpoint = 768;
+    const sections = {
+        home: document.getElementById('home'),
+        resume: document.getElementById('resume'),
+        contact: document.getElementById('contact')
+    };
+
     function isMobile() {
-    return window.innerWidth <= mobileBreakpoint;
+        return window.innerWidth <= mobileBreakpoint;
     }
-    
-    // Toggle mobile menu
-    menuToggle.addEventListener('click', function() {
-    menuToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    });
-    
-    // Close menu when a link is clicked (only on mobile)
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-    if (isMobile()) {
-    menuToggle.classList.remove('active');
-    navMenu.classList.remove('active');
+
+    function toggleMenu() {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
     }
-    // Show/hide sections based on clicked link
-    const targetId = link.getAttribute('href').substring(1);
-    if (targetId === 'home') {
-    homeSection.style.display = 'flex';
-    contactSection.style.display = 'none';
-    } else if (targetId === 'contact') {
-    homeSection.style.display = 'none';
-    contactSection.style.display = 'block';
+
+    function showSection(sectionId) {
+        Object.keys(sections).forEach(key => {
+            sections[key].style.display = key === sectionId ? 'block' : 'none';
+        });
+        if (sectionId === 'home') sections.home.style.display = 'flex';
+        if (sectionId === 'resume') initializeResume();
     }
+
+    function initializeResume() {
+        const skillBars = document.querySelectorAll('.skill-progress');
+        skillBars.forEach(bar => {
+            const targetWidth = bar.getAttribute('data-progress');
+            bar.style.width = '0';
+            setTimeout(() => {
+                bar.style.width = targetWidth;
+                bar.style.transition = 'width 1s ease-in-out';
+            }, 100);
+        });
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (isMobile()) toggleMenu();
+            showSection(link.getAttribute('href').substring(1));
+        });
     });
-    });
-    
-    // Contact Me button functionality
+
     if (contactMeButton) {
-    contactMeButton.addEventListener('click', () => {
-    homeSection.style.display = 'none';
-    contactSection.style.display = 'block';
-    });
+        contactMeButton.addEventListener('click', () => showSection('contact'));
     }
-    
-    // Scroll to top functionality
+
     window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 100) {
-    scrollToTopButton.classList.add('visible');
-    } else {
-    scrollToTopButton.classList.remove('visible');
-    }
+        scrollToTopButton.classList.toggle('visible', window.pageYOffset > 100);
     });
-    
+
     scrollToTopButton.addEventListener('click', () => {
-    window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
-    });
-    
-    // Handle form submission
+
     contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    // Add form submission logic here
-    alert('Form submitted successfully!');
-    contactForm.reset();
+        e.preventDefault();
+        alert('Form submitted successfully!');
+        contactForm.reset();
     });
-    
-    // Handle window resize
+
     window.addEventListener('resize', () => {
-    if (!isMobile()) {
-    menuToggle.classList.remove('active');
-    navMenu.classList.remove('active');
-    }
+        if (!isMobile()) {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
     });
-    });
+
+    showSection('home');
+});
