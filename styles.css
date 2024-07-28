@@ -32,7 +32,7 @@ body, html {
   align-items: center;
   max-width: 1200px;
   width: 100%;
-  padding: 30px;
+  padding: 20px;
 }
 
 /* Navbar Styles */
@@ -125,7 +125,7 @@ body, html {
 .info-section {
   flex: 0 0 60%;
   max-width: 60%;
-  padding: 30px;
+  padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -204,6 +204,7 @@ body, html {
   list-style-type: none;
   padding: 0;
   margin-bottom: 20px;
+  padding-inline-start: 0; 
 }
 
 .contact-info li {
@@ -211,6 +212,7 @@ body, html {
   display: flex;
   align-items: center;
   transition: all 0.3s ease;
+  padding-left: 0;
 }
 
 .contact-info li:hover {
